@@ -15,7 +15,7 @@ public class CarName {
 
     public CarName(String name) {
         validateName(name);
-        this.name = name;
+        this.name = name.trim();
     }
 
     private void validateName(String name) {
@@ -33,7 +33,7 @@ public class CarName {
     }
 
     private boolean greaterThenMaxLength(String name) {
-        return name.length() > MAX_LENGTH;
+        return name.trim().length() > MAX_LENGTH;
     }
 
 

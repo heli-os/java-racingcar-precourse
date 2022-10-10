@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
@@ -37,6 +38,12 @@ class CarNameTest {
         assertThatThrownBy(() -> new CarName(nullInput))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("car name must not be empty or null");
+    }
 
+    @ParameterizedTest
+    @ValueSource(strings = {" Heli ", "Heli ", "      Heli"})
+    void 이름_저장_시_앞_뒤_공백을_제거한다(String input) {
+        CarName carName = new CarName(input);
+        assertThat(carName.name()).isEqualTo("Heli");
     }
 }
