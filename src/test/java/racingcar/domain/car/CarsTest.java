@@ -26,10 +26,19 @@ class CarsTest {
     void OngoingNumbers_를_받아_차를_전진_할_수_있다() {
         OngoingNumbers ongoingNumbers = new OngoingNumbers(0, 4, 5);
         Cars cars = Cars.cars("Heli,  test,  abc")
-                .ongoingCars(ongoingNumbers);
+                .ongoing(ongoingNumbers);
 
         assertThat(cars.cars().get(0).position()).isEqualTo(0);
         assertThat(cars.cars().get(1).position()).isEqualTo(1);
         assertThat(cars.cars().get(2).position()).isEqualTo(1);
+    }
+
+    @Test
+    void car_의_수를_확인할_수_있다() {
+        OngoingNumbers ongoingNumbers = new OngoingNumbers(0, 4, 5);
+        Cars cars = Cars.cars("Heli,  test,  abc")
+                .ongoing(ongoingNumbers);
+
+        assertThat(cars.size()).isEqualTo(3);
     }
 }

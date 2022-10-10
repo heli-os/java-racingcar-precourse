@@ -3,7 +3,7 @@ package racingcar.domain.car;
 /**
  * @author Heli
  */
-public class Car {
+public class Car implements Comparable<Car> {
 
     private final CarName name;
     private final CurrentPosition position;
@@ -36,5 +36,10 @@ public class Car {
     @Override
     public String toString() {
         return name.name() + " : " + position.toString();
+    }
+
+    @Override
+    public int compareTo(Car o) {
+        return Integer.compare(this.position.position(), o.position.position());
     }
 }

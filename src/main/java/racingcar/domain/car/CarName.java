@@ -20,11 +20,11 @@ public class CarName {
 
     private void validateName(String name) {
         if (isEmpty(name)) {
-            log.error("car name must not be empty or null", IllegalArgumentException.class);
+            log.error("car name must not be empty or null");
         }
 
         if (greaterThenMaxLength(name)) {
-            log.error("length of car name must be less then or equals " + MAX_LENGTH, IllegalArgumentException.class);
+            log.error("length of car name must be less then or equals " + MAX_LENGTH);
         }
     }
 
