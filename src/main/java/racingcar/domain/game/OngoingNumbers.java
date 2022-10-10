@@ -1,5 +1,6 @@
 package racingcar.domain.game;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.infrastructure.AppLogger;
 
 import java.util.Arrays;
@@ -20,6 +21,14 @@ public class OngoingNumbers {
             validate(ongoingNumber);
         }
         this.ongoingNumbers = Arrays.copyOf(ongoingNumbers, ongoingNumbers.length);
+    }
+
+    public OngoingNumbers addRandomNumbers(int size) {
+        int[] randomNumbers = Arrays.copyOf(this.ongoingNumbers, this.ongoingNumbers.length + size);
+        for (int i = 0; i < size; i++) {
+            randomNumbers[i] = Randoms.pickNumberInRange(ONGOING_NUMBER_MIN, ONGOING_NUMBER_MAX);
+        }
+        return new OngoingNumbers(randomNumbers);
     }
 
     public int get(int index) {
