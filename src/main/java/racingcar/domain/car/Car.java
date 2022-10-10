@@ -32,4 +32,9 @@ public class Car {
     public int position() {
         return this.position.position();
     }
+
+    @Override
+    public String toString() {
+        return name.name() + " : " + position.toString();
+    }
 }

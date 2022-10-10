@@ -35,4 +35,17 @@ class CurrentPositionTest {
         Assertions.assertThat(ongoing.position()).isEqualTo(0);
     }
 
+    @Test
+    void toString_시_현재_위치를_하이픈_으로_표시한다_1() {
+        CurrentPosition currentPosition = new CurrentPosition();
+        Assertions.assertThat(currentPosition.toString()).isEqualTo("");
+    }
+
+    @Test
+    void toString_시_현재_위치를_하이픈_으로_표시한다_2() {
+        CurrentPosition currentPosition = new CurrentPosition()
+                .ongoing(9)
+                .ongoing(9);
+        Assertions.assertThat(currentPosition.toString()).isEqualTo("--");
+    }
 }

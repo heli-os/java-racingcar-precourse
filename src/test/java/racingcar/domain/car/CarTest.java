@@ -1,7 +1,9 @@
 package racingcar.domain.car;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -37,5 +39,14 @@ class CarTest {
         Car car = Car.car(name)
                 .ongoing(ongoingCount);
         assertThat(car.position()).isEqualTo(0);
+    }
+
+    @Test
+    void toString_시_차_이름과_현재_위치를_표시한다() {
+        Car car = Car.car("heli")
+                .ongoing(9)
+                .ongoing(9)
+                .ongoing(9);
+        Assertions.assertThat(car.toString()).isEqualTo("heli : ---");
     }
 }
